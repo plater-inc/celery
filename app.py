@@ -13,8 +13,8 @@ def main():
 
 @app.route('/add', methods=['POST'])
 def add_inputs():
-    x = int(request.form['x'])
-    y = int(request.form['y'])
-    add.delay(x, y)
+    _type = int(request.form['type'])
+    data = int(request.form['data'])
+    add.delay({ "data": data, "type": _type })
     flash("Your addition job has been submitted.")
     return redirect('/')
